@@ -1,4 +1,4 @@
-# Client-Server-Encrypted-Communication
+# C++ and Python Project: Encrypted File Transfer Server & Client
 
 # About
 This project involves a Python-based server and a C++-based client, designed for encrypted file transfer. The server manages user registrations and file transfers, while the client handles secure communication with the server.

@@ -1,5 +1,4 @@
-""" Name: Or Badani
-    ID: 316307586 """
+""" Name: Or Badani """
 
 import struct
 from constants import *

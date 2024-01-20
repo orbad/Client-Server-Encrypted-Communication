@@ -1,3 +1,6 @@
+// Name: Or Badani
+// ID: 316307586
+
 /*
 Response.h
 */
@@ -11,7 +14,7 @@ Response.h
 #define PACKET_SIZE 1024 // see how to do this better 1 time
 
 class Response {
-	friend class Action;
+	friend class Client;
 #pragma pack(push, 1)
 	struct ResponseFormat {
 		union UResponseHeader {

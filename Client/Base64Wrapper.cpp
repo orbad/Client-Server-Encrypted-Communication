@@ -1,3 +1,6 @@
+// Name: Or Badani
+// ID: 316307586
+
 #include "Base64Wrapper.h"
 
 

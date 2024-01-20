@@ -1,3 +1,6 @@
+// Name: Or Badani
+// ID: 316307586
+
 #include "Response.h"
 
 /* Unpacks the buffer received into the Response struct according to the given protocol. */

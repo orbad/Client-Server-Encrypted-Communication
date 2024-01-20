@@ -1,3 +1,6 @@
+// Name: Or Badani
+// ID: 316307586
+
 #include "CRC.h"
 
 /* This code is taken from Stackoverflow. */

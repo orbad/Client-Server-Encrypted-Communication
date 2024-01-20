@@ -1,9 +1,11 @@
+""" Name: Or Badani
+    ID: 316307586 """
+
 from constants import *
 import os
 
-
 def getPort(filename):
-    """" 
+    """
     Gets the port from the file.
     If file doesn't exist, defaults to port 1357. 
     """

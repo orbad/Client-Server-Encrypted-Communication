@@ -1,3 +1,6 @@
+""" Name: Or Badani
+    ID: 316307586 """
+
 import os.path
 import sqlite3
 import binascii
@@ -39,10 +42,14 @@ class Database:
             );""")
 
             conn.executescript("""
-            CREATE TABLE files (ID CHAR(16) NOT NULL PRIMARY KEY,
-            FileName CHAR(255),
-            PathName CHAR(255),
-            Verified INT);""")
+            CREATE TABLE files (
+                ClientID CHAR(16) NOT NULL,               
+                FileName CHAR(255),
+                PathName CHAR(255),
+                Verified INT,
+                PRIMARY KEY (ClientID, FileName),
+                FOREIGN KEY (ClientID) REFERENCES clients(ID)
+            );""")
 
             conn.commit()
             conn.close()
@@ -57,6 +64,7 @@ class Database:
         cur = conn.cursor()
         cur.execute("SELECT * FROM clients")
         self.clients = cur.fetchall()  # Storing client data in self.clients
+        print("Database already exists.")
         conn.close()
 
     def getClients(self):
@@ -107,9 +115,9 @@ class Database:
         conn.close()
         return res
 
-    def registerFile(self, id, filename, pathname, verified):
-        """ Registers file into the files table. """
-        return self.executeCommand("INSERT INTO files (ID, FileName, PathName, Verified) VALUES (?, ?, ?, ?)", [id, filename, pathname, verified], True)
+    def registerFile(self, client_id, filename, pathname, verified):
+        """ Registers file into the files table. Assumes that client_id refers to an existing client."""
+        return self.executeCommand("INSERT INTO files (ClientID, FileName, PathName, Verified) VALUES (?, ?, ?, ?)",[client_id, filename, pathname, verified], True)
 
     def setLastSeen(self, id, time):
         """ Given an ID, sets the LastSeen field to the received time. """

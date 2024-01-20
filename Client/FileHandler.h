@@ -1,3 +1,6 @@
+// Name: Or Badani
+// ID: 316307586
+
 /*
 FileHandler.h
 */
@@ -13,6 +16,7 @@ class FileHandler {
 public:
 	bool openFile(const std::string&, std::fstream&, bool);
 	bool openFileBin(const std::string&, std::fstream&, bool);
+	bool openFileOverwrites(const std::string&, std::fstream&);
 	bool closeFile(std::fstream&);
 	bool writeToFile(std::fstream&, const char*, uint32_t);
 	bool readFileIntoPayload(std::fstream&, char*, uint32_t);

@@ -1,3 +1,6 @@
+// Name: Or Badani
+// ID: 316307586
+
 #include "FileHandler.h"
 
 /* Opens the file as binary, and returns true upon success. If the directories don't exist, they will be created. */
@@ -31,6 +34,23 @@ bool FileHandler::openFileBin(const std::string& fileDestination, std::fstream& 
 		std::cerr << "Exception: " << e.what() << std::endl;
 		return false;
 	}
+}
+
+/* Opens the file as binary, and returns true upon success, overwrites written content. If the directories don't exist, they will be created. */
+bool FileHandler::openFileOverwrites(const std::string& fileDestination, std::fstream& thisFile)
+{
+	std::filesystem::path pathToCheck = fileDestination;
+	try {
+		std::filesystem::create_directories(pathToCheck.parent_path());
+		auto flag = std::fstream::binary | std::fstream::out | std::fstream::trunc;
+		thisFile.open(fileDestination.c_str(), flag);
+		return thisFile.is_open();
+	}
+	catch (std::exception& e) {
+		std::cerr << "Exception: " << e.what() << std::endl;
+		return false;
+	}
+	return false;
 }
 
 /* Closes a file, and returns true upon success. */
@@ -73,7 +93,7 @@ bool FileHandler::readFileIntoPayload(std::fstream& thisFile, char* payload, uin
 	return false;
 }
 
-/* Given a buffer, writes the buffer in hex into a file. (Inspired by the code provided by the lecturers, w/ small tweaks)*/
+/* Given a buffer, writes the buffer in hex into a file. (Inspired by the code provided by the lecturers, with small tweaks)*/
 void FileHandler::hexifyToFile(std::fstream& thisFile, const char* buffer, unsigned int length)
 {
 	std::ios::fmtflags f(thisFile.flags());

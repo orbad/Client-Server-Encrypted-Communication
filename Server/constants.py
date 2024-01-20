@@ -1,5 +1,4 @@
-""" Name: Or Badani
-    ID: 316307586 """
+""" Name: Or Badani """
 
 from enum import Enum
 from encryptor import AES_KEY_SIZE
